@@ -33,3 +33,4 @@
 ### Eclipse
 
 - http://blog.xebia.fr/2011/01/19/configurer-automatiquement-eclipse-avec-maven/
+- "Eclipse Workspace Mechanic"
