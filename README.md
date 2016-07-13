@@ -27,3 +27,9 @@
 ### Docker
 
 - http://tutorials.pluralsight.com/devops/docker-a-beginner-guide
+
+## Tools
+
+### Eclipse
+
+- http://blog.xebia.fr/2011/01/19/configurer-automatiquement-eclipse-avec-maven/
