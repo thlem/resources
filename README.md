@@ -14,7 +14,7 @@
 
 - https://github.com/angular/material2 (current version 2.0 Alpha6)
 - https://github.com/angular/angular-cli
-- 
+
 ## Back-End
 
 ### Spring
