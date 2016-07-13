@@ -12,6 +12,7 @@
 
 #### Version 2
 
+- https://angular.io/docs/ts/latest/guide/
 - https://github.com/angular/material2 (current version 2.0 Alpha6)
 - https://github.com/angular/angular-cli
 
