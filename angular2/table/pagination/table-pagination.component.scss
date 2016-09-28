@@ -1,0 +1,38 @@
+.table-pagination {
+  list-style: none;
+  width:100%;
+  padding:0;
+  
+  li {
+    display:inline-block;
+    
+    &.table-pagination-clickable {
+      background: #D0EAF2;
+      border-radius:2px;
+      line-height:25px;
+      text-align: center;
+      font-weight: bold;
+      cursor:pointer;
+      border:1px solid rgba(51, 102, 153, 0.5);
+      height:25px;
+      width:45px;
+      padding:3px;
+
+      &.disabled {
+        color:rgba(0,0,0,0.4);
+        &:hover {
+          box-shadow: none;
+        }
+      }
+
+      &:hover, &.current {
+        box-shadow: 0 0 5px #336699 inset;
+      }
+    }
+
+    &.page-number {
+      width:25px;
+    }
+
+  }
+}

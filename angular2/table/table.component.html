@@ -1,0 +1,30 @@
+<table class="table-component">
+  <thead>
+    <tr>
+      <th *ngFor="let headerElement of headerElements.data">
+        <div>
+          <span class="header-label" (click)="changeSort(headerElement)">{{ headerElement.label | translate }}</span>
+          <div class="sort-arrow-container">
+            <span *ngIf="headerElement.isSortable" class="flex-element material-icons sorter"
+                  (click)="changeSort(headerElement, 'asc')"
+                  [ngClass]="{'sort-active': headerElement.sortDirection === 'asc'}">
+              <i>arrow_drop_up</i>
+            </span>
+            <span *ngIf="headerElement.isSortable" class="flex-element material-icons sorter"
+                  (click)="changeSort(headerElement, 'desc')"
+                  [ngClass]="{'sort-active': headerElement.sortDirection === 'desc'}">
+              <i>arrow_drop_down</i>
+            </span>
+          </div>
+        </div>
+      </th>
+    </tr>
+  </thead>
+  <ng-content></ng-content>
+</table>
+<div *ngIf="enablePagination">
+  <app-table-pagination
+    [totalPage]="totalPage"
+    [currentPage]="currentPage"
+    (pageChangeEvent)=handlePageChangeEvent($event)></app-table-pagination>
+</div>
