@@ -1,22 +1,28 @@
-<ul class="table-pagination" *ngIf="totalPage && totalPage > 1">
-  <li [ngClass]="{'disabled':!hasPrevious()}" class="table-pagination-clickable" (click)="changePage(1, hasPrevious())">First</li>
-  <li [ngClass]="{'disabled':!hasPrevious()}" class="table-pagination-clickable">
-    <span (click)="changePage(currentPage - 1, hasPrevious())"><<</span>
+<ul class="table-pagination" *ngIf="paginationData.totalPages && paginationData.totalPages > 1">
+  <li [ngClass]="{'disabled':!hasPrevious()}" class="table-pagination-clickable" (click)="changePage(1, hasPrevious())">
+    <<
   </li>
-  <span *ngFor="let page of pages">
-    <li *ngIf="isPageInRange(page)"  (click)="changePage(page, true)"
-        [ngClass]="{'current':page === currentPage}" class="page-number table-pagination-clickable">
-      {{ page }}
+  <li [ngClass]="{'disabled':!hasPrevious()}" class="table-pagination-clickable"
+      (click)="changePage(paginationData.currentPage - 1, hasPrevious())">
+    <
+  </li>
+  <span *ngFor="let pageNum of pages">
+    <li *ngIf="isPageInRange(pageNum)"  (click)="changePage(pageNum, true)"
+        [ngClass]="{'current':pageNum === paginationData.currentPage}" class="page-number table-pagination-clickable">
+      {{ pageNum }}
     </li>
   </span>
   <li *ngIf="displayLastPage()">
     ...
   </li>
   <li *ngIf="displayLastPage()" [ngClass]="{'disabled':!hasNext()}" class="page-number table-pagination-clickable">
-    <span (click)="changePage(totalPage, hasNext())">{{  totalPage  }}</span>
+    <span (click)="changePage(paginationData.totalPages, hasNext())">{{  paginationData.totalPages  }}</span>
   </li>
-  <li [ngClass]="{'disabled':!hasNext()}" class="table-pagination-clickable">
-    <span (click)="changePage(currentPage + 1, hasNext())">>></span>
+  <li [ngClass]="{'disabled':!hasNext()}" class="table-pagination-clickable"
+      (click)="changePage(paginationData.currentPage + 1, hasNext())">
+    >
   </li>
-  <li [ngClass]="{'disabled':!hasNext()}" class="table-pagination-clickable" (click)="changePage(totalPage, hasNext())">Last</li>
+  <li [ngClass]="{'disabled':!hasNext()}" class="table-pagination-clickable" (click)="changePage(paginationData.totalPages, hasNext())">
+    >>
+  </li>
 </ul>

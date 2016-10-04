@@ -7,6 +7,7 @@ import {
     OnDestroy
    } from '@angular/core';
 import { Logger } from 'angular2-logger/core';
+import { Pagination } from './shared/pagination.model';
 
 /**
  * The component to display pagination
@@ -17,11 +18,8 @@ import { Logger } from 'angular2-logger/core';
   styleUrls:   ['table-pagination.component.scss']
 })
 export class TablePaginationComponent implements OnInit, OnDestroy {
-  @Input()
-  public totalPage: number;
 
-  @Input()
-  public currentPage: number;
+  @Input() paginationData: Pagination;
 
   public pages: Array<number> = [];
 
@@ -31,7 +29,7 @@ export class TablePaginationComponent implements OnInit, OnDestroy {
 
   public ngOnInit() {
     this.logger.debug('[TablePaginationComponent][INIT][START]');
-    for (let i = 1; i <= this.totalPage; i++) {
+    for (let i = 1; i <= this.paginationData.totalPages; i++) {
       this.pages.push(i);
     }
     this.logger.debug('[TablePaginationComponent][INIT][END]');
@@ -42,17 +40,17 @@ export class TablePaginationComponent implements OnInit, OnDestroy {
   }
 
   public hasPrevious() {
-    return this.currentPage !== 1;
+    return this.paginationData.currentPage !== 1;
   }
 
   public hasNext() {
-    return this.currentPage !== this.totalPage;
+    return this.paginationData.currentPage !== this.paginationData.totalPages;
   }
 
-  public isPageInRange(page) {
-    if (page <= this.currentPage && (this.currentPage - page) <= 4) {
+  public isPageInRange(paginationData) {
+    if (paginationData <= this.paginationData.currentPage && (this.paginationData.currentPage - paginationData) <= 2) {
        return true;
-    } else if (page >= this.currentPage && (page - this.currentPage) <= 4) {
+    } else if (paginationData >= this.paginationData.currentPage && (paginationData - this.paginationData.currentPage) <= 2) {
       return true;
     }
     return false;
@@ -65,6 +63,6 @@ export class TablePaginationComponent implements OnInit, OnDestroy {
   }
 
   public displayLastPage() {
-    return this.currentPage + 4 < this.totalPage;
+    return this.paginationData.currentPage + 2 < this.paginationData.totalPages;
   }
 }

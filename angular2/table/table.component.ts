@@ -1,5 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
 import { Logger } from 'angular2-logger/core';
+import { TableHeader, HeaderElement, SortDirection } from './shared/header.model';
+import { Pagination } from './pagination/shared/pagination.model';
 
 /**
  * This component provide table element with a sortable header.
@@ -14,21 +16,17 @@ export class TableComponent implements OnInit, OnDestroy {
   /**
    * Should be an array of json objects like : 
    * [{
-   *   label: string, // display in the table head ex: 'Name'
-   *   propertyName: string // the property key value ex: '(parentObject).child.subChild.name'
+   *   label: string,
    *   isSortable: boolean,
-   *   sortDirection: string //'desc' or 'asc' on the first table item you want use the sort
+   *   isSortedAsc: boolean,
+   *   isSortedDesc: boolean
    * }]
    */
-  @Input() headerElements: any;
+  @Input() tableHeader: TableHeader;
 
-  @Input() enablePagination: boolean;
+  @Input() disablePagination: boolean;
 
-  @Input()
-  public totalPage: number;
-
-  @Input()
-  public currentPage: number;
+  @Input() paginationData: Pagination;
 
   // The event catch by parent component
   @Output() sortEvent = new EventEmitter();
@@ -49,35 +47,37 @@ export class TableComponent implements OnInit, OnDestroy {
 
   /**
    * This function manage the state of the sortable element
-   * @param {any}    headerElement The element to toggle sorting
-   * @param {string} type The type of sorting (Optional)
+   * @param {HeaderElement}    headerElement The element to toggle sorting
+   * @param {SortDirection} sortDirection The type of sorting (Optional)
    */
-  public changeSort(headerElement: any, type: string) {
+  public changeSort(headerElement: HeaderElement, sortDirection?: SortDirection) {
 
     // Check if the given element is sortable (to avoid errors)
     if (headerElement.isSortable) {
 
-      if (!type && !headerElement.sortDirection) {
-        type = 'asc';
-      } else if (!type && headerElement.sortDirection === 'desc') {
-        type = 'asc';
-      } else if (!type && headerElement.sortDirection === 'asc') {
-        type = 'desc';
+      if (!sortDirection && !headerElement.sortDirection) {
+        sortDirection = SortDirection.ASC;
+      }
+      else if (!sortDirection && headerElement.sortDirection === SortDirection.DESC) {
+        sortDirection = SortDirection.ASC;
+      }
+      else if (!sortDirection && headerElement.sortDirection === SortDirection.ASC) {
+        sortDirection = SortDirection.DESC;
       }
 
       // Clear all sort states of other elements
-      this.headerElements.data.forEach(function(headerElem) {
+      this.tableHeader.headerElements.forEach(function(headerElem) {
         if (headerElem !== headerElement) {
           delete headerElem.sortDirection;
         }
       });
 
-       headerElement.sortDirection = type;
+       headerElement.sortDirection = sortDirection;
 
       // Send event to inform parent component for headerElements changes
       let element = {
-        'headerElements': this.headerElements,
-        'sortableInfo': headerElement
+        'updatedTableHeader': this.tableHeader,
+        'headerElementToSort': headerElement
       };
       this.sortEvent.next(element);
     }

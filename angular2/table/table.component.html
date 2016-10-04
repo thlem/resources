@@ -1,7 +1,7 @@
 <table class="table-component">
   <thead>
     <tr>
-      <th *ngFor="let headerElement of headerElements.data">
+      <th *ngFor="let headerElement of tableHeader.headerElements">
         <div>
           <span class="header-label" (click)="changeSort(headerElement)">{{ headerElement.label | translate }}</span>
           <div class="sort-arrow-container">
@@ -22,9 +22,8 @@
   </thead>
   <ng-content></ng-content>
 </table>
-<div *ngIf="enablePagination">
+<div>
   <app-table-pagination
-    [totalPage]="totalPage"
-    [currentPage]="currentPage"
+    [paginationData]="paginationData"
     (pageChangeEvent)=handlePageChangeEvent($event)></app-table-pagination>
 </div>
