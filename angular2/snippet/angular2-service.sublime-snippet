@@ -1,0 +1,47 @@
+<snippet>
+  <content><![CDATA[
+// Angular 2 Import
+import { Injectable } from '@angular/core';
+
+// Third Lib Import
+import { Observable } from 'rxjs/Rx';
+
+// Application Import
+/* Components */
+/* Directives */
+/* Services */
+/* Models */
+/* Constants */
+
+/**
+ * ${2:Service Description}
+ */
+@Injectable()
+export class ${1:Name}Service {
+
+  console.debug('[${1:Name}Service][INIT] The ${1:Name}Service has been instantiated');
+
+  //
+  // Private Variables
+  //
+
+  //
+  // Public Variables
+  //
+
+  //
+  // Public Functions
+  //
+
+  //
+  // Private Functions
+  //
+  
+}
+
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>angular2-service</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <!-- <scope>source.python</scope> -->
+</snippet>

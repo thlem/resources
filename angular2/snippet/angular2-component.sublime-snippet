@@ -1,0 +1,69 @@
+<snippet>
+  <content><![CDATA[
+// Angular 2 Import
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+
+// Third Lib Import
+
+// Application Import
+/* Components */
+/* Directives */
+/* Services */
+/* Models */
+/* Constants */
+
+/**
+ * ${2:Component Description}
+ */
+@Component({
+  selector: 'app-${3:component-name}',
+  templateUrl: '${4:component-view}.html',
+  styleUrls: [ '${4:component-view}.scss' ]
+})
+export class ${1:Name}Component {
+
+  //
+  // Private Variables
+  //
+
+  //
+  // Public Variables
+  //
+
+  //
+  // Public Functions
+  //
+  
+  /**
+   * The Constructor to inject providers.
+   */
+  public constructor() {}
+  
+  /**
+   * On Initialization, this component does : 
+   */
+  public ngOnInit() {
+    console.debug('[${1:Name}Component][INIT][START]');
+    console.debug('[${1:Name}Component][INIT][END]');
+  }
+
+  /**
+   * On Destroy, this component does : 
+   */
+  public ngOnDestroy() {
+    console.debug('[${1:Name}Component][DESTROY][START]');
+    console.debug('[${1:Name}Component][DESTROY][END]');
+  }
+
+  //
+  // Private Functions
+  //
+  
+}
+
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>angular2-component</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <!-- <scope>source.python</scope> -->
+</snippet>

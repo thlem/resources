@@ -1,0 +1,31 @@
+<snippet>
+  <content><![CDATA[
+// Angular 2 Import
+import { NgModule } from '@angular/core';
+
+// Third Lib Import
+
+// Application Import
+/* Components */
+/* Directives */
+/* Services */
+/* Models */
+/* Constants */
+
+/**
+ * ${6:Module description}
+ */
+@NgModule({
+  imports:      [ ${1:Routing Configuration / Used external modules} ],
+  declarations: [ ${2:Declared Components of the Module} ],
+  providers:    [ ${3:Declared Providers use by the Module} ],
+  exports:      [ ${4:Exported Components} ]
+})
+export class ${5:Name}Module { }
+
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>angular2-module</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <!-- <scope>source.python</scope> -->
+</snippet>

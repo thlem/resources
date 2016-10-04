@@ -1,0 +1,27 @@
+<snippet>
+  <content><![CDATA[
+// Angular 2 Import
+import { ModuleWithProviders }  from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+
+// Third Lib Import
+
+// Application Import
+/* Components */
+/* Directives */
+/* Services */
+/* Models */
+/* Constants */
+
+export const routes: Routes = [
+  ${2:angular2-new-route}
+];
+
+export const ${1:ModuleName}_ROUTE_CONFIGURATION: ModuleWithProviders = RouterModule.forRoot(routes);
+
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>angular2-routing</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <!-- <scope>source.python</scope> -->
+</snippet>
